@@ -1,4 +1,8 @@
-#include "includes.h"
+#include "../include/includes.h"
+#include "../imgui/imgui.h"
+#include "settings.h"
+#include "utils.h"
+#include "../imgui/imgui_internal.h"
 
 namespace Renderer
 {
@@ -84,7 +88,7 @@ namespace Renderer
 						DirectX::XMFLOAT3 m1 = DirectX::XMFLOAT3(head.x + factor, head.y, 0);
 						DirectX::XMFLOAT3 m3 = DirectX::XMFLOAT3(foot.x - factor, foot.y, 0);
 						DirectX::XMFLOAT3 m4 = DirectX::XMFLOAT3(foot.x + factor, foot.y, 0);
-
+						/*thickness default = 1.0*/
 						RenderLine(ImVec2(m1.x, m1.y), ImVec2(m2.x, m2.y), *Chosencolor);
 						RenderLine(ImVec2(m2.x, m2.y), ImVec2(m3.x, m3.y), *Chosencolor);
 						RenderLine(ImVec2(m3.x, m3.y), ImVec2(m4.x, m4.y), *Chosencolor);
@@ -151,7 +155,7 @@ namespace Renderer
 		return y;
 	}
 
-	void RenderLine(const ImVec2& from, const ImVec2& to, uint32_t color, float thickness)
+	void RenderLine(const ImVec2& from, const ImVec2& to, uint32_t color, float thickness = 1.0)
 	{
 		ImGuiWindow* window = ImGui::GetCurrentWindow();
 
